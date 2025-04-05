@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+    <title>Proxym</title>
+    <link rel="stylesheet" href="Index.css">
+
+</head>
+
+<body>
+    <div class="overlay1"></div>
+    <div class="container">
+        <div class="profile-img">
+            <img src="images/trip.jpg" alt="Traveler" />
+        </div>
+
+        <h1 id="heading1">Exploring the Mountains</h1>
+
+        <div class="trip-info">
+            <p><i class="ri-calendar-line"></i> March 10, 2025</p>
+            <p><i class="ri-map-pin-line"></i> Manali, Himachal Pradesh</p>
+        </div>
+
+        <div class="divider">
+            <div></div>
+            <i class="ri-suitcase-line"></i>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="grid-wrapper">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&auto=format&fit=crop&q=60"
+                alt="Paris">
+            <div class="overlay">Paris, France</div>
+        </div>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&auto=format&fit=crop&q=60"
+                alt="New York">
+            <div class="overlay">New York, USA</div>
+        </div>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1616091093714-c64882e9ab55?w=500&auto=format&fit=crop&q=60"
+                alt="Tokyo">
+            <div class="overlay">Tokyo, Japan</div>
+        </div>
+        <div class="image-container">
+            <img src="https://plus.unsplash.com/premium_photo-1708276231926-996b3cf6c846?w=500&auto=format&fit=crop&q=60"
+                alt="London">
+            <div class="overlay">London, UK</div>
+        </div>
+        <div class="image-container video">
+            <video autoplay loop muted playsinline>
+                <source src="images/proxym.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay">London, UK</div>
+        </div>
+        <div class="image-container  video">
+            <video autoplay loop muted playsinline>
+                <source src="images/proxym_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay">London, UK</div>
+        </div>
+        <div class="image-container">
+            <img src="https://plus.unsplash.com/premium_photo-1673758910678-e335643d0817?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amV3ZWxsZXJ5JTIwbW9kZWx8ZW58MHx8MHx8fDA%3D"
+                alt="New York">
+            <div class="overlay">New York, USA</div>
+        </div>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8amV3ZWxsZXJ5JTIwbW9kZWx8ZW58MHx8MHx8fDA%3D"
+                alt="New York">
+            <div class="overlay">New York, USA</div>
+        </div>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZSUyMG1vZGVsfGVufDB8fDB8fHww"
+                alt="London">
+            <div class="overlay">London, UK</div>
+        </div>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1625158244150-5cf613b736c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGRyZXNzJTIwbW9kZWx8ZW58MHx8MHx8fDA%3D"
+                alt="Paris">
+            <div class="overlay">Paris, France</div>
+        </div>
+
+    </div>
+
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <span class="prev">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Popup Image" />
+            <video id="lightbox-video" autoplay loop muted playsinline controls>
+                <source id="lightbox-video-source" src="" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <span class="next">&#10095;</span>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = Array.from(document.querySelectorAll('.grid-wrapper img, .grid-wrapper video'));
+            const lightbox = document.querySelector('.lightbox');
+            const imgEl = document.getElementById('lightbox-img');
+            const videoEl = document.getElementById('lightbox-video');
+            const videoSource = document.getElementById('lightbox-video-source');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            let currentIndex = 0;
+
+            function showLightbox(index) {
+                if (index < 0) index = items.length - 1;
+                if (index >= items.length) index = 0;
+                currentIndex = index;
+
+                const item = items[currentIndex];
+                lightbox.style.display = 'flex';
+                imgEl.style.display = 'none';
+                videoEl.style.display = 'none';
+                videoEl.pause();
+
+                if (item.tagName === 'IMG') {
+                    imgEl.src = item.src;
+                    imgEl.style.display = 'block';
+                } else if (item.tagName === 'VIDEO') {
+                    const src = item.querySelector('source')?.src || item.currentSrc;
+                    if (src) {
+                        videoSource.src = src;
+                        videoEl.load();
+                        videoEl.style.display = 'block';
+                        videoEl.play();
+                    }
+                }
+            }
+
+            items.forEach((item, i) => {
+                item.addEventListener('click', () => showLightbox(i));
+            });
+
+            closeBtn.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+                videoEl.pause();
+            });
+
+            prevBtn.addEventListener('click', () => showLightbox(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showLightbox(currentIndex + 1));
+
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display !== 'flex') return;
+                if (e.key === 'Escape') lightbox.style.display = 'none';
+                if (e.key === 'ArrowRight') showLightbox(currentIndex + 1);
+                if (e.key === 'ArrowLeft') showLightbox(currentIndex - 1);
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>
